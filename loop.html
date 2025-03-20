@@ -5,10 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sliding Puzzle Challenge</title> 
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        .puzzle-container { width: 300px; height: 300px; display: grid; grid-template-columns: repeat(3, 1fr); margin: auto; }
-        .tile { width: 100px; height: 100px; border: 1px solid #000; background-size: 300px 300px; cursor: pointer; }
-        .empty { background: none; border: none; }
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .puzzle-container { 
+            width: 300px; 
+            height: 300px; 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            border: 2px solid black;
+        }
+        .tile { 
+            width: 100px; 
+            height: 100px; 
+            border: 1px solid #000; 
+            background-size: 300px 300px; 
+            cursor: pointer; 
+        }
+        .empty { 
+            background: none; 
+            border: none; 
+        }
+        .reference-image {
+            width: 200px; /* Smaller reference image */
+            height: auto;
+            border: 2px solid black;
+        }
         .celebration-container {
             display: none;
             margin-top: 20px;
@@ -32,8 +62,14 @@
         This is the image of a famous personality.<br>
         Solve this sliding puzzle and get your code to the next mystery.
     </h3>
-    
-    <div class="puzzle-container" id="puzzle"></div>
+
+    <div class="container">
+        <!-- Puzzle -->
+        <div class="puzzle-container" id="puzzle"></div>
+
+        <!-- Smaller Reference Image -->
+        <img src="resize-17424879731639283464timcook.jpg" alt="Reference Image" class="reference-image">
+    </div>
     
     <!-- Celebration GIF Below the Solved Puzzle -->
     <div class="celebration-container" id="celebration-container">
@@ -96,4 +132,3 @@
     </script>
 </body>
 </html>
-
