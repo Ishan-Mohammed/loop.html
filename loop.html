@@ -7,7 +7,7 @@
     <style>
         body { 
             text-align: center; 
-            font-family: Arial, sans-serif; 
+            font-family: Arial, sans-serif;
         }
         .container {
             display: flex;
@@ -71,7 +71,7 @@
         <img src="resize-17424879731639283464timcook.jpg" alt="Reference Image" class="reference-image">
     </div>
     
-    <!-- Celebration GIF Below the Solved Puzzle -->
+    <!-- Celebration GIF -->
     <div class="celebration-container" id="celebration-container">
         <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="Celebration">
         <div class="message" id="message">Great! You have done it!</div>
@@ -82,52 +82,56 @@
         let puzzle = document.getElementById("puzzle");
         let tiles = [];
         const imageUrl = "resize-17424879731639283464timcook.jpg";
-        
+
         function createTiles() {
             let numbers = [...Array(rows * cols).keys()];
             numbers.sort(() => Math.random() - 0.5);
-            
+
             numbers.forEach((num, index) => {
                 let tile = document.createElement("div");
                 tile.classList.add("tile");
+                
                 if (num !== rows * cols - 1) {
                     let x = (num % cols) * -100;
                     let y = Math.floor(num / cols) * -100;
-                    tile.style.backgroundImage = `url('${imageUrl}')`;
+                    tile.style.backgroundImage = `url("${imageUrl}")`;
                     tile.style.backgroundPosition = `${x}px ${y}px`;
                 } else {
                     tile.classList.add("empty");
                 }
+
                 tile.dataset.index = num;
                 tile.addEventListener("click", moveTile);
                 puzzle.appendChild(tile);
                 tiles.push(tile);
             });
         }
-        
+
         function moveTile(event) {
             let tile = event.target;
             let emptyTile = document.querySelector(".empty");
             let tileIndex = tiles.indexOf(tile);
             let emptyIndex = tiles.indexOf(emptyTile);
-            
+
             let validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - cols, emptyIndex + cols];
+
             if (validMoves.includes(tileIndex)) {
                 [tiles[tileIndex], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[tileIndex]];
                 puzzle.innerHTML = "";
                 tiles.forEach(tile => puzzle.appendChild(tile));
             }
-            
+
             checkWin();
         }
-        
+
         function checkWin() {
             let isSolved = tiles.every((tile, index) => tile.dataset.index == index);
             if (isSolved) {
                 document.getElementById("celebration-container").style.display = "block";
+                document.getElementById("message").style.display = "block";
             }
         }
-        
+
         createTiles();
     </script>
 </body>
