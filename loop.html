@@ -8,6 +8,14 @@
         body { 
             text-align: center; 
             font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .container {
             display: flex;
@@ -24,6 +32,9 @@
             display: grid; 
             grid-template-columns: repeat(3, 1fr); 
             border: 2px solid black;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 5px;
         }
         .tile { 
             width: calc(90vw / 3);
@@ -34,6 +45,7 @@
             background-image: url("resize-17424879731639283464timcook.jpg");
             background-size: 300px 300px;
             cursor: pointer; 
+            border-radius: 5px;
         }
         .empty { 
             background: none; 
@@ -44,6 +56,7 @@
             max-width: 220px;
             height: auto;
             border: 2px solid black;
+            border-radius: 10px;
         }
         .celebration-container {
             display: none;
@@ -137,3 +150,4 @@
     </script>
 </body>
 </html>
+
