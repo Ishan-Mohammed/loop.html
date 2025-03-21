@@ -99,16 +99,15 @@
         const imageUrl = "resize-17424879731639283464timcook.jpg";
 
         function createTiles() {
-            let numbers = [...Array(rows * cols).keys()];
-            numbers.sort(() => Math.random() - 0.5);
+            let fixedPattern = [1, 4, 2, 3, 7, 5, 6, 8, 0]; // Fixed solvable pattern
 
-            numbers.forEach((num, index) => {
+            fixedPattern.forEach((num, index) => {
                 let tile = document.createElement("div");
                 tile.classList.add("tile");
                 
-                if (num !== rows * cols - 1) {
-                    let x = (num % cols) * -100;
-                    let y = Math.floor(num / cols) * -100;
+                if (num !== 0) {
+                    let x = ((num - 1) % cols) * -100;
+                    let y = Math.floor((num - 1) / cols) * -100;
                     tile.style.backgroundImage = `url("${imageUrl}")`;
                     tile.style.backgroundPosition = `${x}px ${y}px`;
                 } else {
